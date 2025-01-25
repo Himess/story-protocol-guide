@@ -2,6 +2,26 @@
 
 Bu rehberde, Story protokolü üzerinde fikri mülkiyetinizi (IP) nasıl kaydedeceğinizi öğreneceksiniz. İlk adım, bilgisayarınızı ve gerekli araçları hazırlamak olacak.
 
+## 0.Test Cüzdan oluşturma ve Faucet Talep etme
+
+Burası için bomboş bir metamask test cüzdanınızı kullanmanızı öneririm.
+Cüzdanınızı oluşturduktan sonra
+Sağ üstten üç noktaya tıklayıp hesap bilgilerine tıklayın.
+
+![image](https://github.com/user-attachments/assets/e796eae9-3934-4430-8670-c5716b9b6184)
+
+Daha sonra özel anahtarı göstere tıklayın ve size verdiği anahtarı bir not defterine kaydedin bize lazım olacak.
+
+Bu aşamayı bitirdik şimdi bize Test IP lazım.
+
+Bunun için https://faucet.story.foundation/ adresine gidip test IP talep etmeniz gerekmekte.
+Gitcoin puanı gerekiyor. Main hesabınızdan alıp, test adresinize atabilirsiniz.
+Ortalama 2-3 dakikaya test IP 'leriniz gelmiş olur.
+
+Herşey hazırsa kuruluma başlayabiliriz.
+
+---
+
 ## 1. Bir Çalışma Klasörü Oluşturun
 
 Bilgisayarınızda bir klasör oluşturun. Örneğin: `StoryProject`. Bu klasörün içine tüm kodlarınızı ve dosyalarınızı ekleyeceğiz.
@@ -58,6 +78,7 @@ Terminale şu komutları yazın:
 ```bash
 node -v
 npm -v
+```
 
 Eğer şu şekilde çıktı alıyorsanız, kurulum başarılıdır:
 
@@ -71,8 +92,9 @@ Aşağıdaki komutları çalıştırarak bir Node.js projesi başlatın:
 
 ```bash
 npm init -y
+```
 
-Bu komut, projenizin kök dizininde bir 'package.json' dosyası oluşturur.
+Bu komut, projenizin kök dizininde bir `package.json` dosyası oluşturur.
 
 Örnek çıktı şu şekilde olmalıdır:
 
@@ -80,33 +102,37 @@ Bu komut, projenizin kök dizininde bir 'package.json' dosyası oluşturur.
 
 ---
 
-## 6. '.env' Dosyası Oluşturun
+## 6. `.env` Dosyası Oluşturun
 
-Proje klasörünüzde '.env' adında bir dosya oluşturun. Bu dosya, özel anahtarlarınızı ve hassas bilgilerinizi saklamak için kullanılacak.
+Proje klasörünüzde `.env` adında bir dosya oluşturun. Bu dosya, özel anahtarlarınızı ve hassas bilgilerinizi saklamak için kullanılacak.
 
 Adımlar:
 1-VS Code içinde sağ tıklayın ve New File seçeneğini seçin.
-2-Dosya adını '.env' olarak yazın ve Enter tuşuna basın.
+2-Dosya adını `.env` olarak yazın ve Enter tuşuna basın.
 Şöyle görünecek:
 ![image](https://github.com/user-attachments/assets/9997e18c-85d1-4c64-a06c-bd4b52a73d03)
 
+
 Sonuç şu şekilde olacaktır:
+
 ![image](https://github.com/user-attachments/assets/049c1b5b-6d18-497e-8764-d8f8d5b3e22d)
 
 ---
 
 ## 7. Testnet Cüzdan Özel Anahtarını Ekleyin
 
-Story Testnet cüzdan özel anahtarınızı '.env' dosyasına ekleyin. Bu özel anahtar, Story ağına bağlantı kurmanızı sağlar.
+Story Testnet cüzdan özel anahtarınızı `.env` dosyasına ekleyin. Bu özel anahtar, Story ağına bağlantı kurmanızı sağlar.
 
 Örnek:
 ```bash
 WALLET_PRIVATE_KEY=<YOUR_WALLET_PRIVATE_KEY>
 Not: Özel anahtarınızı asla başkasıyla paylaşmayın. Yeni bir cüzdan oluşturmanızı öneririm.
+```
 
 Örnek Çıktı:
 ```bash
 WALLET_PRIVATE_KEY=e12312312312312312312312312312312312312312312312312312312312312
+```
 
 ---
 
@@ -119,30 +145,34 @@ Aşağıdaki kutucukları işaretleyin:
 
 ![image](https://github.com/user-attachments/assets/f64181c3-8c0d-445f-ab9f-a48d995a8533)
 
-Verdiği JWT anahtarını kaydedin ve '.env' dosyanıza ekleyin:
+Verdiği JWT anahtarını kaydedin ve `.env` dosyanıza ekleyin:
 ```bash
 PINATA_JWT=<YOUR_PINATA_JWT>
+```
 
 Örnek:
 ```bash
 PINATA_JWT=e12321431242141424
+```
 
 ---
 
-## 9. '.env' Dosyasını Güncelleme
+## 9. `.env` Dosyasını Güncelleme
 
-1-RPC URL'sini '.env' dosyasına ekleyin.
+1-RPC URL'sini `.env` dosyasına ekleyin.
 2-NFT Contract Adresi ekleyin.
 ```bash
 RPC_PROVIDER_URL=https://rpc.odyssey.storyrpc.io
 NFT_CONTRACT_ADDRESS=0x041B4F29183317Fd352AE57e331154b73F8a1D73
+```
 
-Final '.env' Örneği:
+Final `.env` Örneği:
 ```bash
 WALLET_PRIVATE_KEY=e12312312312312312312312312312312312312312312312312312312312312
 PINATA_JWT=e12321431242141424
 RPC_PROVIDER_URL=https://rpc.odyssey.storyrpc.io
 NFT_CONTRACT_ADDRESS=0x041B4F29183317Fd352AE57e331154b73F8a1D73
+```
 
 ---
 
@@ -151,6 +181,7 @@ NFT_CONTRACT_ADDRESS=0x041B4F29183317Fd352AE57e331154b73F8a1D73
 Terminalde aşağıdaki komutu çalıştırarak projeniz için gerekli bağımlılıkları yükleyin:
 ```bash
 npm install @story-protocol/core-sdk pinata-web3 viem
+```
 
 Kurulum tamamlandığında dosyalarınız şu şekilde görünecek:
 
@@ -191,6 +222,7 @@ const config: StoryConfig = {
 const client = StoryClient.newClient(config);
 
 export { client, account };
+```
 
 Sonuç şu şekilde görünecek:
 
@@ -202,7 +234,7 @@ Sonuç şu şekilde görünecek:
 
 IP ve NFT metadata bilgilerini oluşturacağız.
 
-Proje kök dizininde 'main.ts' adında bir dosya oluşturun.
+Proje kök dizininde `main.ts` adında bir dosya oluşturun.
 Aşağıdaki kodu dosyaya yapıştırın:
 
 ```typescript
@@ -274,11 +306,12 @@ async function main() {
 main().catch((error) => {
   console.error('Bir hata oluştu:', error);
 });
+```
 
 ---
 
-## 11.3 'uploadToIpfs.ts' Dosyasını Oluşturun
-Proje kök dizininde 'uploadToIpfs.ts' adında bir dosya oluşturun.
+## 11.3 `uploadToIpfs.ts` Dosyasını Oluşturun
+Proje kök dizininde `uploadToIpfs.ts` adında bir dosya oluşturun.
 Aşağıdaki kodu dosyaya yapıştırın:
 
 ```typescript
@@ -292,12 +325,13 @@ export async function uploadJSONToIPFS(jsonMetadata: any): Promise<string> {
   const { IpfsHash } = await pinata.upload.json(jsonMetadata);
   return IpfsHash;
 }
+```
 
 ---
 
 ## 11.4 TypeScript ve tsconfig.json Ayarları
 
-Proje dizininizde bir 'tsconfig.json' dosyası oluşturun. İçerisine aşağıdaki ayarları ekleyin:
+Proje dizininizde bir `tsconfig.json` dosyası oluşturun. İçerisine aşağıdaki ayarları ekleyin:
 
 ```json
 {
@@ -315,14 +349,16 @@ Proje dizininizde bir 'tsconfig.json' dosyası oluşturun. İçerisine aşağıd
   "include": ["**/*.ts"],
   "exclude": ["node_modules"]
 }
+```
 
 Sonuç şu şekilde görünmeli:
+
 ![image](https://github.com/user-attachments/assets/c06ddcb0-23a5-475b-a254-f53e6239d909)
 
 ---
 
 ## 12. Mint Fonksiyonunu Tanımlayın
-Proje kök dizininde 'mintNFT.ts' adlı bir dosya oluşturun ve aşağıdaki kodları ekleyin:
+Proje kök dizininde `mintNFT.ts` adlı bir dosya oluşturun ve aşağıdaki kodları ekleyin:
 
 ```typescript
 import { http, createWalletClient, createPublicClient, Address } from 'viem';
@@ -357,12 +393,13 @@ export async function mintNFT(to: Address, uri: string): Promise<number | undefi
     return parseInt(logs[0].topics[3], 16);
   }
 }
+```
 
 ---
 
-## 13. 'defaultNftContractAbi.ts' Dosyasını Oluşturun
+## 13. `defaultNftContractAbi.ts` Dosyasını Oluşturun
 
-Proje kök dizininde 'defaultNftContractAbi.ts' adında bir dosya oluşturun ve aşağıdaki kodu yapıştırın:
+Proje kök dizininde `defaultNftContractAbi.ts` adında bir dosya oluşturun ve aşağıdaki kodu yapıştırın:
 
 ```typescript
 export const defaultNftContractAbi = [
@@ -391,6 +428,7 @@ export const defaultNftContractAbi = [
     type: "function",
   },
 ];
+```
 
 ---
 
@@ -400,6 +438,7 @@ Tüm dosyaları oluşturduktan sonra, projeyi terminalde çalıştırmak için a
 
 ```bash
 ts-node main.ts
+```
 
 **Örnek Çıktı**
 Projeyi başarıyla çalıştırdıktan sonra aşağıdaki gibi bir çıktı almalısınız:
